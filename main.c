@@ -60,7 +60,7 @@ static char VERSION[] = "XX.YY.ZZ";
 
 // defaults for cmdline options
 #define TARGET_FREQ             WS2811_TARGET_FREQ
-#define GPIO_PIN                18
+#define GPIO_PIN                10 // gpio 10 for SPI MOSI pin 19
 #define DMA                     10
 #define STRIP_TYPE            	WS2811_STRIP_GRB // LED strip we have is GRB
 

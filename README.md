@@ -1,3 +1,39 @@
+### Setting up for Final Project
+
+Using PWM/PCM requires audio driver to be disabled, so SPI interface is used.
+This uses GPIO 10 (pin 19 on Pi 4b).
+
+go to /boot/firmware/config.txt and uncomment this line to enable SPI then reboot Pi 4
+```
+dtparam=spi=on
+```
+
+Scaling Governor needs to be set to performance to disable change in core frequency. This is because ws281x library uses bit-banging to control the GPIO pins.
+Please check the governer with 
+```
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 
+```
+Command like this will work to set the scaling governor
+```
+echo performance | tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+```
+
+Make sure that VDD (5V or 3.3V) and GND are properly connected to WS2812B strip. No reference voltage will cause LEDs to behave unexpectedly.
+
+WS2812B uses 0.7VDD to determine high voltage. However, even with 5V VDD, some LED strips will work even at Pi 4B's GPIO pin at 3.3V
+
+Build the project with 
+```
+make
+```
+
+It currently uses gcc, and -lm flag needs to be specified if building separately
+
+To run the project, run with sudo as it requires root permission for DMA
+```
+sudo led_blink
+```
+
 rpi_ws281x
 ==========
 
