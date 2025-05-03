@@ -161,10 +161,6 @@ void matrix_change_intensity(ws2811_led_t *matrix, uint32_t matrix_size){
 		else{
 			b = b << 1;
 		}
-
-		// update matrix value
-		matrix[i] = 0x0 | r << 16 | g << 8 | b;
-		printf ("Final Matrix Value: %x\r\n", matrix[i]);
 	}
 }
 
