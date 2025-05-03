@@ -91,12 +91,13 @@ ws2811_led_t dotcolors_rgbw[] =
 
 // update RGB matrix values from sound
 void update_led_matrix_from_sound(ws2811_led_t *matrix,  uint32_t* sound_level, uint32_t size){
-
     for (int i = 0; i < size; i++){
-        uint32_t led_value = (sound_level[i] & 0xE0000000) >> 29; // upper 3-bits
-        matrix[i] = dotcolors[led_value];
+        uint32_t led_value = (sound_level[i] & 0xE0) >> 4; // bits[6:4]
+		if (led_value > 7){
+			led_value = 7;
+		}
+		matrix[i] = dotcolors[led_value];
     }
-
 }
 
 

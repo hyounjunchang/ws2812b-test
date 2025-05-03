@@ -106,24 +106,24 @@ int main(int argc, char *argv[])
     while (running)
     {
         if (loop_count % 2 == 1){
-            aud_matrix[0] = 0x3<<29;
-            aud_matrix[1] = 0x1<<29;
-            aud_matrix[2] = 0x0<<29;
-            aud_matrix[3] = 0x0<<29;
-            aud_matrix[4] = 0x7<<29;
-            aud_matrix[5] = 0x6<<29;
-            aud_matrix[6] = 0x0<<29;
-            aud_matrix[7] = 0x1<<29;
+            aud_matrix[0] = 0x0<<4;
+            aud_matrix[1] = 0x1<<4;
+            aud_matrix[2] = 0x2<<4;
+            aud_matrix[3] = 0x3<<4;
+            aud_matrix[4] = 0x4<<4;
+            aud_matrix[5] = 0x5<<4;
+            aud_matrix[6] = 0x6<<4;
+            aud_matrix[7] = 0x7<<4;
         }
         else{
-            aud_matrix[0] = 0x0<<29;
-            aud_matrix[1] = 0x1<<29;
-            aud_matrix[2] = 0x0<<29;
-            aud_matrix[3] = 0x0<<29;
-            aud_matrix[4] = 0x2<<29;
-            aud_matrix[5] = 0x5<<29;
-            aud_matrix[6] = 0x7<<29;
-            aud_matrix[7] = 0x0<<29;
+            aud_matrix[0] = 0x7<<4;
+            aud_matrix[1] = 0x6<<4;
+            aud_matrix[2] = 0x5<<4;
+            aud_matrix[3] = 0x4<<4;
+            aud_matrix[4] = 0x3<<4;
+            aud_matrix[5] = 0x2<<4;
+            aud_matrix[6] = 0x1<<4;
+            aud_matrix[7] = 0x0<<4;
         }
 
         update_led_matrix_from_sound(matrix, &aud_matrix[0],LED_COUNT);
